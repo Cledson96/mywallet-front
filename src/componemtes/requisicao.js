@@ -43,4 +43,16 @@ export function postSaida(body) {
       });
     return promise;
 }
+export function deleteHabitos (id) {
+  console.log(id)
+
+  const promise = axios.delete(`${BASE_URL}/deleta`,{
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      id
+    }
+  });
+  
+  return promise;
+}
 

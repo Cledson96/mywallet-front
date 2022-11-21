@@ -2,9 +2,9 @@ import sair from "../img/Vector.png"
 import mais from "../img/ant-design_plus-circle-outlined.png"
 import menos from "../img/ant-design_minus-circle-outlined.png"
 import { useEffect, useState } from 'react';
-import { getregistro } from "../componemtes/requisicao"
+import { getregistro, deleteHabitos } from "../componemtes/requisicao"
 import { Route } from "react-router-dom";
-import { useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 export default function Registros({ dados }) {
     const navigate = useNavigate();
@@ -42,7 +42,7 @@ export default function Registros({ dados }) {
     }, [atualiza, token]);
 
 
-    console.log(token)
+    console.log(registros)
     return (
         registros.length === 0 ?
 
@@ -100,11 +100,28 @@ export default function Registros({ dados }) {
                                                 {ref.descricao}
                                             </div>
                                         </span>
-
+                                        <span>
                                         <div className="valorpositivo">
                                             {valor.toFixed(2)}
                                         </div>
+                                        <div className="data" onClick={() => {
+                                            if (window.confirm('Tem certeza que deseja deletar este registro?')) {
+                                                let resposta = deleteHabitos(ref._id);
 
+                                                resposta.then(() => {
+                                                    console.log("apagou")
+                                                    let resposta = getregistro(token)
+                                                    resposta.then((res) => {
+                                                        setregistros(res.data);
+                                            
+                                                    });
+                                                })
+                                                resposta.catch(() => {console.log(ref.response.data) })
+                                            }
+                                        }}> x
+                                        </div>
+                                        </span>
+                                       
                                     </div>
                                 )
                             } else {
@@ -118,10 +135,28 @@ export default function Registros({ dados }) {
                                                 {ref.descricao}
                                             </div>
                                         </span>
+                                        <span>
                                         <div className="valornegativo">
                                             {valor.toFixed(2)}
                                         </div>
+                                        <div className="data" onClick={() => {
+                                            if (window.confirm('Tem certeza que deseja deletar este registro?')) {
+                                                let resposta = deleteHabitos(ref._id);
 
+                                                resposta.then(() => {
+                                                    console.log("apagou")
+                                                    let resposta = getregistro(token)
+                                                    resposta.then((res) => {
+                                                        setregistros(res.data);
+                                            
+                                                    });
+                                                })
+                                                resposta.catch(() => {console.log(ref.response.data) })
+                                            }
+                                        }}> x
+                                        </div>
+                                        </span>
+                                        
                                     </div>
                                 )
                             }
@@ -131,22 +166,22 @@ export default function Registros({ dados }) {
                     </div>
                     <div className="total">
                         <h5>SALDO</h5>
-                        { saldo > 0 ? <div className="valorpositivo">
+                        {saldo > 0 ? <div className="valorpositivo">
                             {saldo.toFixed(2)}
                         </div>
-                        :
-                        <div className="valornegativo">
-                            {saldo.toFixed(2)}
-                        </div>
+                            :
+                            <div className="valornegativo">
+                                {saldo.toFixed(2)}
+                            </div>
 
                         }
-                       
+
                     </div>
                 </div>
 
                 <div className="modifica">
 
-                    <button onClick={()=> navigate('/entrada')} className="registrar">
+                    <button onClick={() => navigate('/entrada')} className="registrar">
                         <img className="modific" alt="" src={mais} />
                         <div className="arruma">
                             <h3>Nova</h3>
@@ -155,7 +190,7 @@ export default function Registros({ dados }) {
 
                     </button>
 
-                    <button onClick={()=> navigate('/saida')} className="registrar">
+                    <button onClick={() => navigate('/saida')} className="registrar">
                         <img className="modific" alt="" src={menos} />
                         <div className="arruma">
                             <h3>Nova</h3>
