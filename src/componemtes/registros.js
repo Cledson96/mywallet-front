@@ -3,7 +3,6 @@ import mais from "../img/ant-design_plus-circle-outlined.png"
 import menos from "../img/ant-design_minus-circle-outlined.png"
 import { useEffect, useState } from 'react';
 import { getregistro, deleteHabitos, deletesessao } from "../componemtes/requisicao"
-import { Route } from "react-router-dom";
 import { useNavigate } from 'react-router-dom'
 
 export default function Registros({ dados }) {
@@ -12,7 +11,7 @@ export default function Registros({ dados }) {
     let token = dados.token;
     const [registros, setregistros] = useState([]);
     const [atualiza, setatualiza] = useState([]);
-    console.log(Route.params)
+    
     let somar = Number(0);
     let tirar = Number(0);
     if (registros.length > 0) {
@@ -61,7 +60,7 @@ export default function Registros({ dados }) {
 
                 <div className="modifica">
 
-                    <button className="registrar">
+                    <button onClick={() => navigate('/entrada')} className="registrar">
                         <img className="modific" alt="" src={mais} />
                         <div className="arruma">
                             <h3>Nova</h3>
@@ -70,7 +69,7 @@ export default function Registros({ dados }) {
 
                     </button>
 
-                    <button className="registrar">
+                    <button onClick={() => navigate('/saida')} className="registrar">
                         <img className="modific" alt="" src={menos} />
                         <div className="arruma">
                             <h3>Nova</h3>

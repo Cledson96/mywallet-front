@@ -13,7 +13,7 @@ export default function Saida({dados}) {
             [name]: value,
         });
     };
-    console.log(enventrada)
+   
     function autoriza(){
         setcarregando(["referencia"])
         let resposta = postSaida(enventrada,dados.token);
