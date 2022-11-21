@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:5000';
+const BASE_URL = 'https://mywallet-api-2nj2.onrender.com';
 
 
 export function postLogin(body) {
