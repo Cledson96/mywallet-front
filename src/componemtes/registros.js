@@ -2,16 +2,14 @@ import sair from "../img/Vector.png"
 import mais from "../img/ant-design_plus-circle-outlined.png"
 import menos from "../img/ant-design_minus-circle-outlined.png"
 import { useEffect, useState } from 'react';
-import { getregistro, deleteHabitos } from "../componemtes/requisicao"
+import { getregistro, deleteHabitos, deletesessao } from "../componemtes/requisicao"
 import { Route } from "react-router-dom";
 import { useNavigate } from 'react-router-dom'
 
 export default function Registros({ dados }) {
     const navigate = useNavigate();
     let nome = localStorage.getItem("nome");
-    let token = localStorage.getItem("token");
-    const [soma, setsoma] = useState(0);
-    const [tira, settira] = useState(0);
+    let token = dados.token;
     const [registros, setregistros] = useState([]);
     const [atualiza, setatualiza] = useState([]);
     console.log(Route.params)
@@ -30,7 +28,7 @@ export default function Registros({ dados }) {
         }
     }
 
-    let saldo = Number(somar - tirar)
+    let saldo = Number(somar - tirar);
 
     useEffect(() => {
         let resposta = getregistro(token)
@@ -42,13 +40,18 @@ export default function Registros({ dados }) {
     }, [atualiza, token]);
 
 
-    console.log(registros)
     return (
         registros.length === 0 ?
 
             <div className='fundo'>
 
-                <div className="topo"><h2>Olá, {nome}</h2> <img className="sair" alt="" src={sair} /></div>
+                <div className="topo"><h2>Olá, {nome}</h2> <img onClick={() => {
+                    let resposta = deletesessao(token);
+                    resposta.then(() => {
+                        navigate('/')
+                    })
+                    resposta.catch((ref) => { console.log(ref.response.data) })
+                }} className="sair" alt="" src={sair} /></div>
 
                 <div className="registros">
                     <h4>Não há registros de
@@ -83,7 +86,14 @@ export default function Registros({ dados }) {
 
             <div className='fundo'>
 
-                <div className="topo"><h2>Olá, {nome}</h2> <img className="sair" alt="" src={sair} /></div>
+                <div className="topo"><h2>Olá, {nome}</h2> <img onClick={() => {
+                    let resposta = deletesessao(token);
+                    resposta.then(() => {
+                        navigate('/')
+                            ;
+                    })
+                    resposta.catch((ref) => { console.log(ref.response.data) })
+                }} className="sair" alt="" src={sair} /></div>
 
                 <div className="registros">
                     <div className="tdsregistros">
@@ -101,27 +111,26 @@ export default function Registros({ dados }) {
                                             </div>
                                         </span>
                                         <span>
-                                        <div className="valorpositivo">
-                                            {valor.toFixed(2)}
-                                        </div>
-                                        <div className="data" onClick={() => {
-                                            if (window.confirm('Tem certeza que deseja deletar este registro?')) {
-                                                let resposta = deleteHabitos(ref._id);
+                                            <div className="valorpositivo">
+                                                {valor.toFixed(2)}
+                                            </div>
+                                            <div className="data" onClick={() => {
+                                                if (window.confirm('Tem certeza que deseja deletar este registro?')) {
+                                                    let resposta = deleteHabitos(ref._id, dados.token);
 
-                                                resposta.then(() => {
-                                                    console.log("apagou")
-                                                    let resposta = getregistro(token)
-                                                    resposta.then((res) => {
-                                                        setregistros(res.data);
-                                            
-                                                    });
-                                                })
-                                                resposta.catch(() => {console.log(ref.response.data) })
-                                            }
-                                        }}> x
-                                        </div>
+                                                    resposta.then(() => {
+                                                        let resposta = getregistro(token)
+                                                        resposta.then((res) => {
+                                                            setregistros(res.data);
+
+                                                        });
+                                                    })
+                                                    resposta.catch(() => { console.log(ref.response.data) })
+                                                }
+                                            }}> x
+                                            </div>
                                         </span>
-                                       
+
                                     </div>
                                 )
                             } else {
@@ -136,27 +145,27 @@ export default function Registros({ dados }) {
                                             </div>
                                         </span>
                                         <span>
-                                        <div className="valornegativo">
-                                            {valor.toFixed(2)}
-                                        </div>
-                                        <div className="data" onClick={() => {
-                                            if (window.confirm('Tem certeza que deseja deletar este registro?')) {
-                                                let resposta = deleteHabitos(ref._id);
+                                            <div className="valornegativo">
+                                                {valor.toFixed(2)}
+                                            </div>
+                                            <div className="data" onClick={() => {
+                                                if (window.confirm('Tem certeza que deseja deletar este registro?')) {
+                                                    let resposta = deleteHabitos(ref._id, token);
 
-                                                resposta.then(() => {
-                                                    console.log("apagou")
-                                                    let resposta = getregistro(token)
-                                                    resposta.then((res) => {
-                                                        setregistros(res.data);
-                                            
-                                                    });
-                                                })
-                                                resposta.catch(() => {console.log(ref.response.data) })
-                                            }
-                                        }}> x
-                                        </div>
+                                                    resposta.then(() => {
+                                                        console.log("apagou")
+                                                        let resposta = getregistro(token)
+                                                        resposta.then((res) => {
+                                                            setregistros(res.data);
+
+                                                        });
+                                                    })
+                                                    resposta.catch(() => { console.log(ref.response.data) })
+                                                }
+                                            }}> x
+                                            </div>
                                         </span>
-                                        
+
                                     </div>
                                 )
                             }

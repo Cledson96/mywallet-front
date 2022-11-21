@@ -30,15 +30,10 @@ export default function Cadastro() {
             return alert("As senhas precisam ser iguais!!")
         }
         resposta.then((ref) => {
-            console.log(ref.data)
-          
-          navigate('/', {
-                state: {
-                    "autorize":"ola"
-                },
-            })
+         
+          navigate('/')
         })
-        resposta.catch((ref) => { setcarregando([]); console.log(ref.response.data) })
+        resposta.catch((ref) => { setcarregando([])})
 
     }
     return (

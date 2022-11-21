@@ -3,7 +3,7 @@ import { useNavigate} from 'react-router-dom'
 import { postSaida } from './requisicao'
 import { useState } from 'react';
 
-export default function Saida() {
+export default function Saida({dados}) {
     const [carregando, setcarregando] = useState([]);
     const [enventrada, setenventrada] = useState({});
     const navigate = useNavigate();
@@ -16,16 +16,11 @@ export default function Saida() {
     console.log(enventrada)
     function autoriza(){
         setcarregando(["referencia"])
-        let resposta = postSaida(enventrada);
+        let resposta = postSaida(enventrada,dados.token);
        
         resposta.then((ref) => {
-            console.log(ref.data)
-          
-          navigate('/registros', {
-                state: {
-                    "autorize":"ola"
-                },
-            })
+        
+                    navigate('/registros')
         })
         resposta.catch((ref) => { setcarregando([]);console.log(ref.response.data)})
 
