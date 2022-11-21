@@ -1,0 +1,262 @@
+@import url('https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Saira+Stencil+One&display=swap');
+
+body {
+    background: #8C11BE;
+}
+
+h1 {
+    font-family: 'Saira Stencil One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 50px;
+    color: #FFFFFF;
+    margin-bottom: 24px;
+}
+
+button {
+    max-width: 80vw;
+    width: 326px;
+    height: 58px;
+    background: #A328D6;
+    border-radius: 5px;
+    color: #FFFFFF;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+}
+
+input {
+    max-width: 80vw;
+    width: 326px;
+    height: 58px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    margin-bottom: 13px;
+}
+
+::placeholder {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    color: #000000;
+}
+
+.fundo {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    word-break: break-all;
+    margin: 0;
+}
+
+.link {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 18px;
+    color: #FFFFFF;
+    text-decoration: none;
+    margin-top: 36px;
+}
+
+.topo {
+    height: 31px;
+    display: flex;
+    justify-content: space-between;
+    width: 85vw;
+    margin-bottom: 22px;
+    margin-top: 10px;
+    align-items: center;
+}
+
+h2 {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 31px;
+    color: #FFFFFF;
+}
+
+.registros {
+    width: 85vw;
+    max-height: calc(100% - 260px);
+    background: #FFFFFF;
+    border-radius: 5px;
+    height: 100%;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    text-align: center;
+    color: #868686;
+    background: #FFFFFF;
+    border-radius: 5px;
+    padding-left: 12px;
+    padding-top: 23px;
+    padding-right: 11px;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.modifica {
+    width: 85vw;
+    height: 114px;
+    display: flex;
+    margin-top: 13px;
+    justify-content: space-between;
+}
+
+.registrar {
+    padding-top: 11px;
+    padding-bottom: 9px;
+    padding-left: 10px;
+    flex-direction: column;
+    display: flex;
+    width: 155px;
+    height: 114px;
+    background: #A328D6;
+    border-radius: 5px;
+    justify-content: space-between;
+    align-items: flex-start;
+
+}
+
+.sair {
+    width: 23px;
+    height: 24px;
+}
+
+.modific {
+    width: 22px;
+    height: 22px;
+}
+
+h3 {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 20px;
+    color: #FFFFFF;
+    margin: 0;
+    text-align: start;
+
+}
+
+.arruma {
+    height: 40px;
+    width: 64px;
+}
+
+h4 {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    text-align: center;
+    color: #868686;
+}
+
+.registrado {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.data {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #C6C6C6;
+    margin-right: 10px;
+
+}
+
+.atividade {
+    word-break: break-all;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    display: flex;
+}
+
+.valorpositivo {
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: right;
+    color: #03AC00;
+    margin-left: 10px;
+}
+
+.valornegativo {
+    margin-left: 10px;
+
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: right;
+
+    color: #C70000;
+
+}
+
+span {
+    display: flex;
+}
+
+.total {
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 20px;
+    color: #000000;
+
+
+}
+.registrando{
+    padding-top: 15px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.tdsregistros{
+    overflow-y: scroll;
+    max-height: 100%;
+    max-width: 100%;
+}
